@@ -1,0 +1,87 @@
+<div class="grid">
+
+	<div class="col-12">
+		<div class="card">
+			<h5>Vehicles</h5>
+			<p-table #dt1 [value]="vehicle$" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['id','plate','status']" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex justify-content-between flex-column sm:flex-row">
+						<button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+						<span class="p-input-icon-left mb-2">
+							<i class="pi pi-search"></i>
+							<input pInputText type="text" #filter (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search Keyword" class="w-full"/>
+						</span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th>
+							<div class="flex justify-content-between align-items-center">
+								Id
+								<p-columnFilter type="text" field="id" display="menu" placeholder="Search by name"></p-columnFilter>
+							</div>
+						</th>
+						<th>
+							<div class="flex justify-content-between align-items-center">
+								Plate
+								<p-columnFilter type="text" field="country.description" display="menu" placeholder="Search by description"></p-columnFilter>
+							</div>
+						</th>
+
+						<th>
+							<div class="flex justify-content-between align-items-center">
+								Picture
+								<p-columnFilter type="text" field="country.description" display="menu" placeholder="Search by description"></p-columnFilter>
+							</div>
+						</th>
+
+						<!-- <th>
+							<div class="flex justify-content-between align-items-center">
+								Status
+								<p-columnFilter type="text" field="country.description" display="menu" placeholder="Search by description"></p-columnFilter>
+							</div>
+						</th> -->
+						
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-item>
+					<tr>
+						<td style="min-width: 5rem;">
+							{{item.id}}
+						</td>
+
+						<td style="min-width: 12rem;">
+							{{item.plate}}
+						</td>
+
+						<td style="min-width: 12rem;" class="text-center">
+							<p-image [src]="item.urlPic" alt="Image" width="60" height="50" [preview]="true"></p-image>
+						</td>
+
+						<!-- <td style="min-width: 12rem;">
+							{{item.activeRow}}
+						</td> -->
+
+						<!-- <td>
+							<button pButton pRipple type="button" (click)="selectPackage(package)" label="Select this" class="p-button-info mr-2 mb-2"></button>
+						</td> -->
+						
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="7">No customers found.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="7">Loading customers data. Please wait.</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+		</div>
+
+	</div>
+
+	
+</div>

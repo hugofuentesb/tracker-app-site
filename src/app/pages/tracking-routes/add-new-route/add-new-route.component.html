@@ -1,0 +1,155 @@
+<p-messages [(value)]="msgs"></p-messages>
+<p-toast key="tst" [baseZIndex]="99999"></p-toast>
+
+<!-- <button pButton label="Save Route" (click)="saveRoute()"></button> -->
+
+
+
+<div class="grid">
+	<div class="col-12 md:col-4">
+
+		<div class="card p-fluid">
+			
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<h5>CREATE A NEW ROUTE</h5>
+				</div>
+				<div class="field col">
+					<button pButton label="Save Route" (click)="saveRoute()" class="p-button-success mr-2 mb-2"></button>
+				</div>
+			</div>
+
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="cmbType">Driver</label>
+					<p-dropdown [options]="drivers$" [(ngModel)]="route.idDriver" placeholder="Select a Type" optionLabel="name" optionValue="id"
+                      [showClear]="true" id="cmbType"></p-dropdown>
+				</div>
+				<div class="field col">
+					<label htmlFor="cmbVehicle">Vehicle</label>
+					<p-dropdown [options]="vehicles$" [(ngModel)]="route.idVehicle" placeholder="Select a Type" optionLabel="plate" optionValue="id"
+                      [showClear]="true" id="cmbVehicle"></p-dropdown>
+				</div>
+			</div>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="cmbClient">Client</label>
+					<p-dropdown [options]="clients$" [(ngModel)]="route.idClient" placeholder="Select a Type" optionLabel="name" optionValue="id"
+                      [showClear]="true" id="cmbClient"></p-dropdown>
+				</div>
+				<div class="field col">
+					<label htmlFor="cmbDevice">Device</label>
+					<p-dropdown [options]="devices$" [(ngModel)]="route.idDevice" placeholder="Select a Type" optionLabel="description" optionValue="id"
+                      [showClear]="true" id="cmbDevice"></p-dropdown>
+				</div>
+			</div>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="name2">Estimated Start date</label>
+					<p-calendar [(ngModel)]="route.estimatedStartDate"></p-calendar>
+				</div>
+				<div class="field col">
+					<label htmlFor="email2">Estimated End date</label>
+					<p-calendar [(ngModel)]="route.estimatedEndDate"></p-calendar>
+				</div>
+			</div>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="name2">Start date</label>
+					<p-calendar [(ngModel)]="route.startDate" disabled="true"></p-calendar>
+				</div>
+				<div class="field col">
+					<label htmlFor="email2">End date</label>
+					<p-calendar [(ngModel)]="route.endDate" disabled="true"></p-calendar>
+				</div>
+			</div>
+
+			<!-- <div class="field">
+				<label htmlFor="age1">Description</label>
+				<textarea pInputTextarea  id="txtDescription"></textarea>
+			</div> -->
+			
+
+		</div>
+
+
+
+
+		
+
+		<div class="card p-fluid">
+			<h5>Waypoints</h5>
+			<div *ngFor="let waypoint of waypoints; index as i">
+
+				<div class="p-formgrid grid">
+					<div class="field col">
+						<label htmlFor="lnglat">Waypint {{i}}</label>
+						<input pInputText id="lnglat" value="{{waypoint.lat}}; {{waypoint.lng}}" type="text" [disabled]="true"/>
+					</div>
+					<div class="field col">
+						<label htmlFor="txt_idPackage_">Package</label>
+						<div id="txt_idPackage_">
+							<button pButton id="p_button_1" pRipple type="button" icon="pi pi-box" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"
+									(click)="clickButtonPackageDialog(i)"></button>
+							<input pInputText id="txt_idPackage" value="{{waypoint.idTrackingPackage}}" type="text" disabled="true" [style.width.px]="100" />
+						</div>
+					</div>
+					<div class="field col">
+						<label htmlFor="div_p_button">Remove</label>
+						<div id="div_p_button">
+							<button pButton id="p_button_2" (click)="removeWayPoint(i)" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		<!-- <div class="card p-fluid">
+			<h5>Waypoints</h5>
+			<div *ngFor="let waypoint of waypoints; index as i">
+
+				<div class="field grid">
+					<label htmlFor="lnglat" class="col-12 mb-2 md:col-2 md:mb-0">Waypint {{i}}</label>
+					<div class="col-7 md:col-5">
+						<input pInputText id="lnglat" value="{{waypoint.lat}}; {{waypoint.lng}}" type="text" />
+					</div>
+
+					<label htmlFor="txt_idPackage" class="col-12 mb-1 md:col-1 md:mb-0">Package</label>
+					<div class="col-1 md:col-1">
+						<input pInputText id="txt_idPackage" value="{{waypoint.idTrackingPackage}}" type="text" disabled="true"/>
+					</div>
+
+					<div class="col-3 md:col-3">
+						<button pButton (click)="removeWayPoint(i)" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"></button>
+						<button pButton pRipple type="button" icon="pi pi-box" class="p-button-rounded p-button-info p-button-outlined mr-2 mb-2"
+							(click)="clickButtonPackageDialog(i)"></button>
+					</div>
+				</div>
+			</div>
+		</div>		 -->
+
+
+	</div>
+
+	
+
+	<div class="col-12 md:col-8">
+		<div class="card p-fluid">
+		<app-mapa (currentPositionEvent)="addWayPoint($event)" (deleteWayPointEvent)="removeWayPoint($event)" #mapaComponent></app-mapa>
+	</div>
+	</div>
+
+	
+</div>
+
+
+<p-dialog header="Select a package" [(visible)]="showPackagesDialog" [style]="{width: '40vw'}">
+	<app-list-packages (selectPackageEvent)="addPackageToWayPoint()" #listPackagesComponent ></app-list-packages>
+</p-dialog>

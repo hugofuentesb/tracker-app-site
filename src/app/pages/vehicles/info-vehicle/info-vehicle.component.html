@@ -1,0 +1,63 @@
+<p-toast key="tst" [baseZIndex]="99999"></p-toast>
+
+<div class="grid">
+	<div class="col-12 md:col-6">
+		
+		
+		<div class="card p-fluid">
+			<h4>
+				{{vehicle$.plate}}
+				<p-rating [(ngModel)]="vehicle$.rating" [stars]="5" [readonly]="true" [cancel]="false"></p-rating>
+			</h4>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="name2">Plate</label>
+					<input pInputText id="name2" [(ngModel)]="vehicle$.plate" [readOnly]="readOnly" [disabled]="readOnly" type="text" />
+				</div>
+			</div>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="email2">Register number</label>
+					<input pInputText [(ngModel)]="vehicle$.lastName" [readOnly]="readOnly" [disabled]="readOnly" id="email2" type="text" />
+				</div>
+			</div>
+
+			<!-- <div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="name2">Phone number</label>
+					<input pInputText [readOnly]="readOnly" [disabled]="readOnly" id="name2" type="text" />
+				</div>
+				<div class="field col">
+					<label htmlFor="email2">Email</label>
+					<input pInputText [readOnly]="readOnly" [disabled]="readOnly" id="email2" type="text" />
+				</div>
+			</div>
+
+			<div class="p-formgrid grid">
+				<div class="field col">
+					<label htmlFor="name2">Addrres</label>
+					<input pInputText [(ngModel)]="vehicle$.username" [readOnly]="readOnly" [disabled]="readOnly" id="name2" type="text" />
+				</div>
+				
+			</div> -->
+
+		</div>
+	</div>
+
+	<div class="col-12 md:col-6">
+		<div class="card p-fluid">
+			<h5></h5>
+
+			<div *ngIf="vehicle$.urlPic != null" class="field grid">
+				<p-image [src]="vehicle$.urlPic" alt="Image" width="300" [preview]="true"></p-image>
+			</div>
+
+		</div>
+		
+	</div>
+	
+
+	
+</div>

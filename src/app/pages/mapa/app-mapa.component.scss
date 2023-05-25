@@ -1,0 +1,33 @@
+
+
+
+.map_box_container{
+  position: relative;
+  height: 130% !important;
+  width: 100% !important;
+}
+  
+#mapa-mapbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* Otros estilos que desees aplicar */
+}
+
+.marker-menu {
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* Otros estilos que desees aplicar */
+}

@@ -1,0 +1,21 @@
+.map_box_container{
+    position: absolute;
+    height: 80% !important;
+    width: 65% !important;
+  }
+  
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.context-menu {
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* Otros estilos que desees aplicar */
+}

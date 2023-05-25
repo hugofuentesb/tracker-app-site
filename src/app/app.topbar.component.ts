@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 import {AppMainComponent} from './app.main.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-topbar',
@@ -18,20 +20,21 @@ import {AppMainComponent} from './app.main.component';
 						<i class="pi pi-bars"></i>
 					</a>
 
-					<a href="#" class="megamenu-mobile-button" (click)="appMain.onMegaMenuMobileButtonClick($event)">
+					<!-- <a href="#" class="megamenu-mobile-button" (click)="appMain.onMegaMenuMobileButtonClick($event)">
 						<i class="pi pi-align-right megamenu-icon"></i>
-					</a>
+					</a> -->
 
 					<a href="#" class="topbar-menu-mobile-button" (click)="appMain.onTopbarMobileMenuButtonClick($event)">
 						<i class="pi pi-ellipsis-v"></i>
 					</a>
 
+					<!--
 					<div class="layout-megamenu-wrapper">
 						<a class="layout-megamenu-button" href="#" (click)="appMain.onMegaMenuButtonClick($event)">
 							<i class="pi pi-comment"></i>
 							Mega Menu
 						</a>
-						<ul class="layout-megamenu" [ngClass]="{'layout-megamenu-active fadeInDown': appMain.megaMenuActive}"
+						 <ul class="layout-megamenu" [ngClass]="{'layout-megamenu-active fadeInDown': appMain.megaMenuActive}"
                             (click)="appMain.onMegaMenuClick($event)">
 							<li [ngClass]="{'active-topmenuitem': activeItem === 1}" (click)="mobileMegaMenuItemClick(1)">
 								<a href="#">JavaServer Faces <i class="pi pi-angle-down"></i></a>
@@ -98,8 +101,8 @@ import {AppMainComponent} from './app.main.component';
 									</li>
 								</ul>
 							</li>
-						</ul>
-					</div>
+						</ul> 
+					</div>-->
                 </div>
                 <div class="layout-topbar-right fadeInDown">
 					<ul class="layout-topbar-actions">
@@ -120,21 +123,21 @@ import {AppMainComponent} from './app.main.component';
 							<a href="#" (click)="appMain.onTopbarItemClick($event,calendar)">
 								<i class="topbar-icon pi pi-calendar"></i>
 							</a>
-							<ul class="fadeInDown" (click)="appMain.topbarItemClick = true">
+							<!-- <ul class="fadeInDown" (click)="appMain.topbarItemClick = true">
 								<li class="layout-submenu-header">
 									<h1>Calendar</h1>
 								</li>
 								<li class="calendar">
                                     <p-calendar [inline]="true"></p-calendar>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 
 						<li #message class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === message}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,message)">
 								<i class="topbar-icon pi pi-inbox"></i>
 							</a>
-							<ul class="fadeInDown">
+							<!-- <ul class="fadeInDown">
 								<li class="layout-submenu-header">
 									<h1>Messages</h1>
 									<span>Today, you have new 4 messages</span>
@@ -171,14 +174,14 @@ import {AppMainComponent} from './app.main.component';
 									</div>
 									<i class="pi pi-angle-right"></i>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 
 						<li #gift class="topbar-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === gift}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,gift)">
 								<i class="topbar-icon pi pi-envelope"></i>
 							</a>
-							<ul class="fadeInDown">
+							<!-- <ul class="fadeInDown">
 								<li class="layout-submenu-header">
 									<h1>Deals</h1>
 								</li>
@@ -237,21 +240,24 @@ import {AppMainComponent} from './app.main.component';
 										</li>
 									</ul>
 								</li>
-							</ul>
+							</ul> -->
 						</li>
 
 						<li #profile class="topbar-item profile-item" [ngClass]="{'active-topmenuitem': appMain.activeTopbarItem === profile}">
 							<a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
                             <span class="profile-image-wrapper">
-                                <img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout" />
+                                <!-- <img src="assets/layout/images/topbar/avatar-eklund.png" alt="mirage-layout" /> -->
+								<img src="assets/layout/images/topbar/avatar-fuentes.jpg" alt="mirage-layout" />
                             </span>
 								<span class="profile-info-wrapper">
-                                <h3>Olivia Eklund</h3>
-                                <span>Design</span>
+                                <!-- <h3>Olivia Eklund</h3>
+                                <span>Design</span> -->
+								<h3>Hugo Fuentes</h3>
+                                <span>Software Developer</span>
                             </span>
 							</a>
 							<ul class="profile-item-submenu fadeInDown">
-								<li class="profile-submenu-header">
+								<!-- <li class="profile-submenu-header">
 									<div class="performance">
 										<span>Weekly Performance</span>
 										<img src="assets/layout/images/topbar/asset-bars.svg" alt="mirage-layout" />
@@ -262,8 +268,8 @@ import {AppMainComponent} from './app.main.component';
 										<h1>Olivia Eklund</h1>
 										<span>Design</span>
 									</div>
-								</li>
-								<li class="layout-submenu-item">
+								</li> -->
+								<!-- <li class="layout-submenu-item">
 									<i class="pi pi-list icon icon-1"></i>
 									<div class="menu-text">
 										<p>Tasks</p>
@@ -286,18 +292,26 @@ import {AppMainComponent} from './app.main.component';
 										<span>+80%</span>
 									</div>
 									<i class="pi pi-angle-right"></i>
+								</li> -->
+								<li class="layout-submenu-item">
+									<i class="pi pi-power-off icon icon-1"></i>
+									<div class="menu-text">
+										<p><p-button label="Sign Out" styleClass="p-button-link" (click)="logOut()" ></p-button></p>
+										<!-- <span>3 open issues</span> -->
+									</div>
+									<i class="pi pi-angle-right"></i>
 								</li>
-								<li class="layout-submenu-footer">
+								<!-- <li class="layout-submenu-footer">
 									<button class="signout-button">Sign Out</button>
 									<button class="buy-mirage-button">Buy Mirage</button>
-								</li>
+								</li> -->
 							</ul>
 						</li>
-						<li>
+						<!-- <li>
 							<a href="#" class="layout-rightpanel-button" (click)="appMain.onRightPanelButtonClick($event)">
 								<i class="pi pi-arrow-left"></i>
 							</a>
-						</li>
+						</li> -->
                     </ul>
 
 					<ul class="profile-mobile-wrapper">
@@ -363,11 +377,18 @@ export class AppTopBarComponent {
 
     activeItem: number;
 
-    constructor(public appMain: AppMainComponent) {}
+    constructor(public appMain: AppMainComponent,
+				private router: Router,
+				private authService: AuthService) {}
 
     mobileMegaMenuItemClick(index) {
         this.appMain.megaMenuMobileClick = true;
         this.activeItem = this.activeItem === index ? null : index;
     }
+
+	logOut() {
+		this.authService.setAuthenticated(false);
+		this.router.navigate(['login']);
+	}
 
 }

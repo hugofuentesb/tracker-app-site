@@ -1,0 +1,17 @@
+
+<!-- <div class="col-12 md:col-8"> -->
+
+<section class="map_box_container" (contextmenu)="showContextMenu($event)">
+  <div id='map' style="position: 'absolute';  top: 0;  bottom: 0;  "></div>  
+</section>
+
+<div class="context-menu" [ngStyle]="{'top.px': contextMenuPositionY, 'left.px': contextMenuPositionX}" *ngIf="showMenu">
+    <ul>
+        <li (click)="menuItemClicked(1)"><a href="">Opción 1</a></li>
+        <li (click)="menuItemClicked(2)">Opción 2</li>
+        <li (click)="menuItemClicked(3)">Opción 3</li>
+    </ul>
+</div>
+
+
+<!-- </div> -->

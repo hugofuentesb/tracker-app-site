@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "mirage": {
+        "trackerApp": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/mirage-ng",
+                        "outputPath": "dist/trackerApp",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -73,14 +73,14 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "mirage:build"
+                        "browserTarget": "trackerApp:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "mirage:build:production"
+                            "browserTarget": "trackerApp:build:production"
                         },
                         "development": {
-                            "browserTarget": "mirage:build:development"
+                            "browserTarget": "trackerApp:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "mirage:build"
+                        "browserTarget": "trackerApp:build"
                     }
                 },
                 "test": {
@@ -125,7 +125,7 @@
             }
         }
     },
-    "defaultProject": "mirage",
+    "defaultProject": "trackerApp",
     "cli": {
       "analytics": "642862f5-e7b4-4d74-8e02-29362cf4113a"
     }

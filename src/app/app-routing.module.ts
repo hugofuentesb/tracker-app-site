@@ -2,23 +2,7 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
-import {FormLayoutDemoComponent} from './demo/view/formlayoutdemo.component';
-import {FloatLabelDemoComponent} from './demo/view/floatlabeldemo.component';
-import {InvalidStateDemoComponent} from './demo/view/invalidstatedemo.component';
-import {InputDemoComponent} from './demo/view/inputdemo.component';
-import {ButtonDemoComponent} from './demo/view/buttondemo.component';
 import {TableDemoComponent} from './demo/view/tabledemo.component';
-import {ListDemoComponent} from './demo/view/listdemo.component';
-import {TreeDemoComponent} from './demo/view/treedemo.component';
-import {PanelsDemoComponent} from './demo/view/panelsdemo.component';
-import {OverlaysDemoComponent} from './demo/view/overlaysdemo.component';
-import {MediaDemoComponent} from './demo/view/mediademo.component';
-import {MessagesDemoComponent} from './demo/view/messagesdemo.component';
-import {MiscDemoComponent} from './demo/view/miscdemo.component';
-import {EmptyDemoComponent} from './demo/view/emptydemo.component';
-import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
-import {FileDemoComponent} from './demo/view/filedemo.component';
-import {DocumentationComponent} from './demo/view/documentation.component';
 import {IconsComponent} from './utilities/icons.component';
 
 import {AppMainComponent} from './app.main.component';
@@ -30,6 +14,16 @@ import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
+import { AddNewRouteComponent } from './pages/tracking-routes/add-new-route/add-new-route.component';
+import { ListPackagesComponent } from './pages/packaging/list-packages/list-packages.component';
+import { ListClientsComponent } from './pages/clients-partners/list-clients.component';
+import { ListRoutesComponent } from './pages/tracking-routes/list-routes/list-routes.component';
+import { ListDriversComponent } from './pages/drivers/list-drivers.component';
+import { ListVehiclesComponent } from './pages/vehicles/list-vehicles.component';
+import { ListDevicesComponent } from './pages/devices/list-devices.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
+import { MapboxComponent } from './pages/mapbox/mapbox.component';
 
 @NgModule({
     imports: [
@@ -37,38 +31,53 @@ import {BlocksComponent} from './blocks/blocks/blocks.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: '', component: DashboardDemoComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
-                    {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},
-                    {path: 'uikit/invalidstate', component: InvalidStateDemoComponent},
-                    {path: 'uikit/input', component: InputDemoComponent},
-                    {path: 'uikit/button', component: ButtonDemoComponent},
+
+                    // HFU
+                    
+                    // {path: '', component: LoginComponent},
+                    // {path: 'trackerApp/mapbox', component: MapboxComponent},
+                    // {path: 'trackerApp/addNewRoute', component: AddNewRouteComponent},
+                    // {path: 'trackerApp/packages', component: ListPackagesComponent},
+                    // {path: 'trackerApp/routes', component: ListRoutesComponent, canActivate: [AuthGuard] },
+
+                    // {path: 'trackerApp/clients', component: ListClientsComponent},
+                    // {path: 'trackerApp/drivers', component: ListDriversComponent},
+                    // {path: 'trackerApp/vehicles', component: ListVehiclesComponent},
+                    // {path: 'trackerApp/devices', component: ListDevicesComponent},
+
+                    {path: '', component: LoginComponent},
+                    {path: 'trackerApp/routes', component: ListRoutesComponent, canActivate: [AuthGuard] },
+                    {path: 'trackerApp/addNewRoute', component: AddNewRouteComponent},
+
+                    {path: 'packages', component: ListPackagesComponent},
+                    
+
+                    {path: 'clients', component: ListClientsComponent},
+                    {path: 'drivers', component: ListDriversComponent},
+                    {path: 'vehicles', component: ListVehiclesComponent},
+                    {path: 'devices', component: ListDevicesComponent},
+
+                    
+                    // HFU
+
+                    
+
+                    //{path: 'dashboard', component: DashboardDemoComponent},
                     {path: 'uikit/table', component: TableDemoComponent},
-                    {path: 'uikit/list', component: ListDemoComponent},
-                    {path: 'uikit/tree', component: TreeDemoComponent},
-                    {path: 'uikit/panel', component: PanelsDemoComponent},
-                    {path: 'uikit/overlay', component: OverlaysDemoComponent},
-                    {path: 'uikit/media', component: MediaDemoComponent},
                     {path: 'uikit/menu', loadChildren: () => import('./demo/view/menus/menus.module').then(m => m.MenusModule)},
-                    {path: 'uikit/message', component: MessagesDemoComponent},
-                    {path: 'uikit/misc', component: MiscDemoComponent},
-                    {path: 'uikit/charts', component: ChartsDemoComponent},
-                    {path: 'uikit/file', component: FileDemoComponent},
                     {path: 'utilities/icons', component: IconsComponent},
-                    {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'pages/crud', component: AppCrudComponent},
                     {path: 'pages/calendar', component: AppCalendarComponent},
                     {path: 'pages/timeline', component: AppTimelineDemoComponent},
-                    {path: 'components/charts', component: ChartsDemoComponent},
-                    {path: 'components/file', component: FileDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent},
                     {path: 'blocks', component: BlocksComponent},
                 ]
             },
             {path: 'error', component: AppErrorComponent},
             {path: 'accessdenied', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
-            {path: 'login', component: AppLoginComponent},
+            // {path: 'login', component: AppLoginComponent},
+            {path: 'login', component: LoginComponent},
+            {path: 'app-main', component: AppMainComponent, canActivate: [AuthGuard]},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

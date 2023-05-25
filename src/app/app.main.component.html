@@ -8,6 +8,7 @@
                 'p-input-filled': app.inputStyle === 'filled',
                 'p-ripple-disabled': !app.ripple}" [class]="app.menuColor">
 
+    <!-- <app-menu *ngIf="isMenuAllowed"></app-menu> -->
     <app-menu></app-menu>
 
     <div class="layout-main">
@@ -15,7 +16,7 @@
 
         <app-rightpanel></app-rightpanel>
 
-        <app-breadcrumb></app-breadcrumb>
+        <!-- <app-breadcrumb></app-breadcrumb> -->
 
         <div class="layout-content">
             <router-outlet></router-outlet>
@@ -23,7 +24,7 @@
 
         <app-footer></app-footer>
 
-        <app-config></app-config>
+        <!-- <app-config></app-config> -->
 
         <div class="layout-main-mask"></div>
 

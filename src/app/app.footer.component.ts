@@ -5,10 +5,11 @@ import {Component} from '@angular/core';
     template: `
         <div class="layout-footer">
 			<div class="logo-text">
-				<img src="assets/layout/images/logo-mirage@2x.png" alt="mirage-layout" />
+				<!-- <img src="assets/layout/images/logo-mirage@2x.png" alt="mirage-layout" /> -->
+				<img src="assets/layout/images/gps-logo.png" alt="mirage-layout" />
 				<div class="text">
-					<h1>Mirage</h1>
-					<span>Premium Application Template</span>
+					<h1>Tracker app</h1>
+					<!-- <span>Premium Application Template</span> -->
 				</div>
 			</div>
 			<div class="icons">

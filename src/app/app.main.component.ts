@@ -3,6 +3,7 @@ import { MenuService } from './app.menu.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { PrimeNGConfig } from 'primeng/api';
 import {AppComponent} from './app.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-main',
@@ -27,7 +28,7 @@ export class AppMainComponent {
 
     menuClick: boolean;
 
-    staticMenuActive: boolean;
+    staticMenuActive: boolean = true;
 
     menuMobileActive: boolean;
 
@@ -56,7 +57,8 @@ export class AppMainComponent {
     configActive: boolean;
 
     constructor(public renderer: Renderer2, private menuService: MenuService,
-                private primengConfig: PrimeNGConfig, public app: AppComponent) {}
+                private primengConfig: PrimeNGConfig, public app: AppComponent,
+                private authService: AuthService) {}
 
     onLayoutClick() {
         if (!this.topbarItemClick) {
@@ -185,6 +187,19 @@ export class AppMainComponent {
 
     isHorizontal() {
         return this.app.horizontalMenu === true;
+    }
+
+    get isMenuAllowed() {
+        let allowed = false;
+        this.authService.isAuthenticated$().subscribe( {
+            next: (result) => {
+            allowed = result;
+            },
+            error: (e) => {
+              console.log("Error reading Authentication:", e);
+            }
+          });
+        return allowed;
     }
 
 }
