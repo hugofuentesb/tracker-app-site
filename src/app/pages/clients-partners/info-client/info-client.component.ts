@@ -1,19 +1,14 @@
 import {Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
-import {Customer, Representative} from '../../../demo/domain/customer';
-import {CustomerService} from '../../../service/customerservice';
-import {Product} from '../../../demo/domain/product';
-import {ProductService} from '../../../service/productservice';
 import {Table} from 'primeng/table';
 import {BreadcrumbService} from '../../../breadcrumb.service';
 import {MessageService, Message, ConfirmationService} from 'primeng/api';
-
 
 import { IntegrationApiService } from 'src/app/services/integration-api.service';
 
 @Component({
     selector: 'app-info-client',
     templateUrl: './info-client.component.html',
-    providers: [MessageService, ConfirmationService, CustomerService, ProductService],
+    providers: [MessageService, ConfirmationService],
     styleUrls: ['../../../../assets/demo/badges.scss'],
     styles: []
 })

@@ -147,35 +147,9 @@ export class AddNewRouteComponent {
     this.route.routeDetails = this.waypoints;
     console.log("ROUTE:", this.route);
 
-  // const variables = {
-  //   input: {
-  //     idDriver: 2,
-  //     idVehicle: 1,
-  //     idClient: 1,
-  //     idDevice: 1,
-  //     estimatedStartDate: "2023-05-10T19:23:00.761000Z",
-  //     estimatedEndDate: "2023-05-10T19:23:00.761000Z",
-  //     routeDetails: [
-  //         {
-  //             idTrackingPackage: 1,
-  //             secuence: 1,
-  //             lng: -79.90765,
-  //             lat: -2.14885
-  //         },
-  //         {
-  //             idTrackingPackage: 2,
-  //             secuence: 2,
-  //             lng: -79.90462,
-  //             lat: -2.14945
-  //         }
-  //     ]
-  //   }
-  // };
-
-  const variables = {
-    input: this.route
-  }
-
+    const variables = {
+      input: this.route
+    }
 
     this.integrationApiService.addRoute(variables).subscribe( {
       next: (result) => {
@@ -188,8 +162,7 @@ export class AddNewRouteComponent {
         this.showErrorMessage(e);
       }
     });
-
-
+    
   }
 
   showErrorMessage(message: string) {

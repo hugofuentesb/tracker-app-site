@@ -47,15 +47,15 @@ import { MapboxComponent } from './pages/mapbox/mapbox.component';
 
                     {path: '', component: LoginComponent},
                     {path: 'trackerApp/routes', component: ListRoutesComponent, canActivate: [AuthGuard] },
-                    {path: 'trackerApp/addNewRoute', component: AddNewRouteComponent},
+                    {path: 'trackerApp/addNewRoute', component: AddNewRouteComponent, canActivate: [AuthGuard]},
 
-                    {path: 'packages', component: ListPackagesComponent},
+                    {path: 'packages', component: ListPackagesComponent, canActivate: [AuthGuard]},
                     
 
-                    {path: 'clients', component: ListClientsComponent},
-                    {path: 'drivers', component: ListDriversComponent},
-                    {path: 'vehicles', component: ListVehiclesComponent},
-                    {path: 'devices', component: ListDevicesComponent},
+                    {path: 'clients', component: ListClientsComponent, canActivate: [AuthGuard]},
+                    {path: 'drivers', component: ListDriversComponent, canActivate: [AuthGuard]},
+                    {path: 'vehicles', component: ListVehiclesComponent, canActivate: [AuthGuard]},
+                    {path: 'devices', component: ListDevicesComponent, canActivate: [AuthGuard]},
 
                     
                     // HFU

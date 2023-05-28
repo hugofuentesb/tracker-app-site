@@ -253,7 +253,7 @@ import { AuthService } from './services/auth.service';
                                 <!-- <h3>Olivia Eklund</h3>
                                 <span>Design</span> -->
 								<h3>Hugo Fuentes</h3>
-                                <span>Software Developer</span>
+                                <span>Developer</span>
                             </span>
 							</a>
 							<ul class="profile-item-submenu fadeInDown">

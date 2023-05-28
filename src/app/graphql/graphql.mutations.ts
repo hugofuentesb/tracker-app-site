@@ -1,14 +1,23 @@
 import {gql} from 'apollo-angular'
 
 
-export const GET_ALL_DRIVERS = gql`
-  query {
-    drivers: getAllDrivers {
-      id
-      name: username
-    }
-  }`;
+// export const GET_ALL_DRIVERS = gql`
+//   query {
+//     drivers: getAllDrivers {
+//       id
+//       name: username
+//     }
+//   }`;
 
+
+
+export const RESTART_ALL_FOR_TEST = gql`
+  query {
+    restartAllForTest {
+      updated
+    }
+  }
+  `;
   
 
 export const  ADD_ROUTE = gql`

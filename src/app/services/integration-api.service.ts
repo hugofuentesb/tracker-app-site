@@ -129,87 +129,14 @@ export class IntegrationApiService {
     return this.apollo.mutate( { mutation: mutations.FINISH_ROUTE, variables: input } );
   }
 
-
-
-
-
-
-  // ===========================================================================
-  //              LOCATIONS
-  // ===========================================================================
-  getLocation(id: number): Observable<any> {
-    return this.http.get(`${this.URLBASE}/location/${id}`);
+  restartAllForTest(input: any): Observable<any> {
+    return this.apollo.mutate( { mutation: mutations.RESTART_ALL_FOR_TEST, variables: input } );
   }
 
-  getLocations(filter: any): Observable<any> {
-    return this.http.get(`${this.URLBASE}/location/`, { params: filter } );
-  }
-
-  /*
-    Create a location
-  */
-  createLocation(request: any): Observable<any> {
-    console.warn(request);
-    return this.http.post(`${this.URLBASE}/location`, request);
-  }
-
-  // Edit a location
-  editLocation(id: number, request: any): Observable<any> {
-    return this.http.put(`${this.URLBASE}/location/${id}`, request);
-  }
-
-  // ===========================================================================
-  //              LOCATION TYPES
-  // ===========================================================================
-
-  /*
-  Getting location types
-  */
-  getLocationTypes(request: any): Observable<any> {
-    return this.http.get(`${this.URLBASE}/locationTypes/`, request);
-  }
-
-  /*
-    Create a location type
-  */
-  createLocationType(request: any): Observable<any> {
-    console.warn(request);
-    return this.http.post(`${this.URLBASE}/locationTypes`, request);
-  }
-
-  // ===========================================================================
-  //              DAYS OF WEEK
-  // ===========================================================================
-  getDeaysOfWeek(request: any): Observable<any> {
-    return this.http.get(`${this.URLBASE}/daysOfWeek`);
-  }
-
-
-  // ===========================================================================
-  //              SCHEDULES
-  // ===========================================================================
-  getShedules(request: any): Observable<any> {
-    return this.http.get(`${this.URLBASE}/schedule`);
-  }
-
-  // ===========================================================================
-  //              BOOKINGS
-  // ===========================================================================
-  /*
-  Getting bookings
-  */
-  getBookings(filter: any): Observable<any> {
-    //console.log(" -> request:", filter);
-    return this.http.get(`${this.URLBASE}/booking/`, { params: filter });
-  }
+  
 
 
 
-  // ===========================================================================
-  //              GAMES
-  // ===========================================================================
-  getListOfGames(request: any): Observable<any> {
-    return this.http.get('https://www.freetogame.com/api/games');
-  }
+
 
 }

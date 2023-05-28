@@ -1,8 +1,4 @@
 import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Input} from '@angular/core';
-import {Customer, Representative} from '../../../demo/domain/customer';
-import {CustomerService} from '../../../service/customerservice';
-import {Product} from '../../../demo/domain/product';
-import {ProductService} from '../../../service/productservice';
 import {Table} from 'primeng/table';
 import {BreadcrumbService} from '../../../breadcrumb.service';
 import {MessageService, Message, ConfirmationService, MenuItem} from 'primeng/api';
@@ -13,7 +9,7 @@ import { IntegrationApiService } from 'src/app/services/integration-api.service'
 @Component({
     selector: 'app-list-routes',
     templateUrl: './list-routes.component.html',
-    providers: [MessageService, ConfirmationService, CustomerService, ProductService],
+    providers: [MessageService, ConfirmationService],
     styleUrls: ['../../../../assets/badges.scss'],
     styles: [`
         :host ::ng-deep  .p-frozen-column {
@@ -72,8 +68,7 @@ export class ListRoutesComponent implements OnInit {
 
     items: MenuItem[];
 
-    constructor(private customerService: CustomerService, private productService: ProductService,
-                private breadcrumbService: BreadcrumbService,
+    constructor(private breadcrumbService: BreadcrumbService,
                 private serviceMessage: MessageService,
                 private integrationApiService: IntegrationApiService) {
         this.breadcrumbService.setItems([
@@ -188,6 +183,21 @@ export class ListRoutesComponent implements OnInit {
             next: (result) => {
                 //console.log(result.data.routeDetails);
                 this.showSuccessMessage('Finish route:', 'Success');
+                this.loadOptions();
+            },
+            error: (e) => {
+                this.showErrorMessage(e);
+            }
+        })
+    }
+
+    restartAllForTest(idRoute: number) {
+        const variables = {};
+
+        this.integrationApiService.restartAllForTest(variables).subscribe( {
+            next: (result) => {
+                console.log(result.data);
+                this.showSuccessMessage('Routes restarted:', 'Success');
                 this.loadOptions();
             },
             error: (e) => {
