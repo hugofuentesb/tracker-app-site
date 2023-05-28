@@ -17,5 +17,6 @@ src/assets/theme/*/theme-*.css
 src/assets/sass/theme/designer
 
 # Conf files
+src/environments/
 src/environments/*.prod.ts
 src/environments/*.ts
